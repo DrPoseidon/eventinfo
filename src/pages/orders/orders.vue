@@ -1,5 +1,7 @@
 <template>
-  <div class="orders"></div>
+  <div class="orders">
+    Заказы
+  </div>
 </template>
 <script>
 export default {

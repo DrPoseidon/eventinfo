@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import mainView from "Pages/mainView";
 import managersMainPage from "Pages/managersMainPage";
 import login from "Pages/login";
 import error404 from "Pages/error404";
@@ -14,9 +15,11 @@ export default new VueRouter({
     { path: "/404", name: "404", component: error404 },
     {
       path: "/",
-      name: "managersMainPage",
-      component: managersMainPage,
-      children: [{ path: "orders", name: "orders", component: orders }],
+      component: mainView,
+      children: [
+        { path: "managersMainPage", component: managersMainPage },
+        { path: "orders", component: orders },
+      ],
     },
     { path: "/login", name: "login", component: login },
   ],
