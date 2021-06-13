@@ -1,10 +1,18 @@
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
+
 // import axios from "axios";
 // const uri = "http://localhost:5000/api/";
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> УДАЛИТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
 import MD5 from "crypto-js/md5";
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 export default {
   LOGIN: async ({ commit }, data) => {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
+
     // const res = await axios.post(`${uri}user/login`, data);
     // if (res.status === 200) {
     //   commit("SET_USER", res.data);
@@ -12,6 +20,7 @@ export default {
     // } else if(res.status === 404) {
     //   return res;
     // }
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> УДАЛИТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
@@ -52,8 +61,10 @@ export default {
   },
   UNPROCESSED_PURSH: async () => {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
+
     // const res = await axios.post(`${uri}manager/unprocessedpursh`, data);
     // const user = res.data;
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> УДАЛИТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
