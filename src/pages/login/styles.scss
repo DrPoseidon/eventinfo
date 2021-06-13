@@ -9,6 +9,15 @@
     text-align: center;
     margin-bottom: 10px;
   }
+  .message {
+    color: red;
+    text-shadow: 0px 0px 2px red;
+    background-color: initial;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 300px;
+  }
   form {
     background-color: #766876;
     display: flex;
@@ -16,6 +25,7 @@
     padding: 20px;
     border-radius: 10px;
     align-items: center;
+
     input,
     button {
       background-color: #c0c0c0;

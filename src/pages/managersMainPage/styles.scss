@@ -1,0 +1,76 @@
+.managersMainPage {
+  background-color: #766876;
+  margin-right: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .managerInfo {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: initial;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 25px;
+    margin: 10px;
+    h2 {
+      background-color: initial;
+      color: #363236;
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .row {
+      background-color: initial;
+      display: flex;
+      flex-direction: row;
+      p {
+        color: #494049;
+        background-color: initial;
+        font-size: 15px;
+        font-weight: 500;
+        &:first-child {
+          margin-right: 5px;
+          color: #363236;
+        }
+      }
+    }
+  }
+  table {
+    margin: 10px;
+    background-color: initial;
+    border-collapse: separate;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    caption {
+      background-color: initial;
+      color: #363236;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    thead {
+      background-color: inherit;
+      tr {
+        background-color: inherit;
+        th {
+          background-color: inherit;
+          text-align: start;
+          padding-right: 10px;
+        }
+      }
+    }
+    tbody {
+      background-color: inherit;
+      tr {
+        background-color: inherit;
+        td {
+          background-color: inherit;
+          border: 2px solid #493d49;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

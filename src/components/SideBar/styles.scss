@@ -4,9 +4,10 @@
   align-items: center;
   background-color: #766876;
   border-radius: 10px;
-  width: auto;
+  height: 260px;
   margin: 0 20px;
   a {
+    cursor: pointer;
     font-weight: 600;
     background-color: initial;
     font-size: 18px;
@@ -19,7 +20,7 @@
       color: #494040;
     }
     &:last-child:hover {
-      color: rgb(133, 7, 7);
+      color: #850707;
     }
   }
   hr {
