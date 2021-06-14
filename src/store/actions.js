@@ -64,7 +64,7 @@ export default {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
 
     // const res = await axios.post(`${uri}manager/unprocessedpursh`, data);
-    // const user = res.data;
+    // return res
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
