@@ -26,8 +26,8 @@ export default {
   name: "login",
   data() {
     return {
-      email: "manager1@mail.ru",
-      password: "manager1",
+      email: "manager@mail.ru",
+      password: "manager",
       message: "",
     };
   },
