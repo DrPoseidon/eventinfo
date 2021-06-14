@@ -72,10 +72,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["UNPROCESSED_PURSH"]),
+    ...mapActions(["GET_UNPROCESSED_PURSH"]),
   },
   mounted() {
-    this.UNPROCESSED_PURSH()
+    this.GET_UNPROCESSED_PURSH()
       .then((res) => {
         if (res.data) this.unprocessedPursh = res.data;
       })

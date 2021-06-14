@@ -60,7 +60,7 @@ export default {
     return res;
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   },
-  UNPROCESSED_PURSH: async () => {
+  GET_UNPROCESSED_PURSH: async () => {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
 
     // const res = await axios.post(`${uri}manager/unprocessedpursh`, data);
@@ -91,6 +91,49 @@ export default {
         resolve({ status: 200, data: data });
       } else {
         reject({ status: 404, data: { message: "Нет заявок" } });
+      }
+    });
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    return res;
+  },
+
+  GET_ORDERS: async () => {
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
+
+    // const res = await axios.post(`${uri}manager/orders`, data);
+
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> УДАЛИТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
+    const data = [
+      {
+        event_date: "2021-06-08T2121:00:00.000Z",
+        event_start_time: "13:00:00",
+        event_end_time: "16:00:00",
+        event_people_count: 5,
+        event_place: "г. Воронеж",
+        event_name: null,
+        event_statues: "ЗАБРОНИРОВАНО",
+        event_type: "Вид мероприятия",
+        event_host: "Андрей",
+      },
+      {
+        event_date: "2021-06-08T2121:00:00.000Z",
+        event_start_time: "17:00:00",
+        event_end_time: "20:00:00",
+        event_people_count: 10,
+        event_place: "г. Липецк",
+        event_name: null,
+        event_statues: "ЗАБРОНИРОВАНО",
+        event_type: "Вид мероприятия",
+        event_host: null,
+      },
+    ];
+    const res = new Promise((resolve, reject) => {
+      if (data.length) {
+        resolve({ status: 200, data: data });
+      } else {
+        reject({ status: 404, data: { message: "Нет заказов" } });
       }
     });
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

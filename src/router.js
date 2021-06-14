@@ -27,7 +27,14 @@ const router = new VueRouter({
             requiresAuth: true,
           },
         },
-        { path: "orders", name: "orders", component: orders },
+        {
+          path: "orders",
+          name: "orders",
+          component: orders,
+          meta: {
+            requiresAuth: true,
+          },
+        },
       ],
     },
     {
