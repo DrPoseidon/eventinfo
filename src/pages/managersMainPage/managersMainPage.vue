@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <table ref="table">
+    <table ref="table" v-if="unprocessedPursh.length">
       <caption>
         Необработанные заявки
       </caption>
@@ -41,6 +41,7 @@
         </tr>
       </tbody>
     </table>
+    <p class="message" v-else>{{ message }}</p>
   </div>
 </template>
 <script>
@@ -50,19 +51,22 @@ export default {
   data() {
     return {
       unprocessedPursh: [],
+      message: "",
     };
   },
   computed: {
     ...mapGetters(["USER"]),
     role() {
-      if (this.USER.role === "manager") return "менеджер";
-      else if (this.USER.role === "worker") return "работник";
-      else if (this.USER.role === "operator") return "оператор";
+      if (this.USER.role === "MANAGER") return "менеджер";
+      else if (this.USER.role === "WORKER") return "работник";
+      else if (this.USER.role === "OPERATOR") return "оператор";
       return "";
     },
     width() {
       this.$nextTick(() => {
-        this.$refs.managerInfo.style.width = `${this.$refs.table.clientWidth}px`;
+        if (this.$refs.table) {
+          this.$refs.managerInfo.style.width = `${this.$refs.table.clientWidth}px`;
+        }
       });
       return "auto";
     },
@@ -71,9 +75,13 @@ export default {
     ...mapActions(["UNPROCESSED_PURSH"]),
   },
   mounted() {
-    this.UNPROCESSED_PURSH().then((res) => {
-      if (res) this.unprocessedPursh = res;
-    });
+    this.UNPROCESSED_PURSH()
+      .then((res) => {
+        if (res.data) this.unprocessedPursh = res.data;
+      })
+      .catch((err) => {
+        this.message = err.data.message;
+      });
   },
 };
 </script>

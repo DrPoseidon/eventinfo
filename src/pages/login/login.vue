@@ -26,8 +26,8 @@ export default {
   name: "login",
   data() {
     return {
-      email: "name@mail.ru",
-      password: "name",
+      email: "manager@email.com",
+      password: "123321",
       message: "",
     };
   },
@@ -35,16 +35,26 @@ export default {
     ...mapActions(["LOGIN"]),
     action() {
       const { email, password } = this;
-      this.LOGIN({ email, password }).then((res) => {
-        if (res.status === 200) {
-          localStorage.setItem("token", JSON.stringify(res.data.token));
-          this.$router.push("/");
-        }
-
-      }).catch(() => {this.message = "Пользователь не найден!";
-        setTimeout(() => {
-          this.message = "";
-        }, 3000);})
+      this.LOGIN({ email, password })
+        .then((res) => {
+          console.log("then");
+          if (res.status === 200) {
+            localStorage.setItem("token", JSON.stringify(res.data.token));
+            this.$router.push("/");
+          }
+          if (res.status === 404) {
+            this.message = res.data.message;
+            setTimeout(() => {
+              this.message = "";
+            }, 3000);
+          }
+        })
+        .catch((err) => {
+          this.message = err.data.message;
+          setTimeout(() => {
+            this.message = "";
+          }, 3000);
+        });
     },
     checkForm() {
       if (this.email && this.password) this.action();
