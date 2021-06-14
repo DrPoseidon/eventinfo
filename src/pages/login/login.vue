@@ -26,8 +26,8 @@ export default {
   name: "login",
   data() {
     return {
-      email: "manager@email.com",
-      password: "123321",
+      email: "name@mail.ru",
+      password: "name",
       message: "",
     };
   },
@@ -37,15 +37,14 @@ export default {
       const { email, password } = this;
       this.LOGIN({ email, password }).then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("token", JSON.stringify(res.token));
+          localStorage.setItem("token", JSON.stringify(res.data.token));
           this.$router.push("/");
-        } else {
-          this.message = res.message;
-          setTimeout(() => {
-            this.message = "";
-          }, 3000);
         }
-      });
+
+      }).catch(() => {this.message = "Пользователь не найден!";
+        setTimeout(() => {
+          this.message = "";
+        }, 3000);})
     },
     checkForm() {
       if (this.email && this.password) this.action();
