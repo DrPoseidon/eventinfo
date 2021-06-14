@@ -77,10 +77,10 @@ export default {
   mounted() {
     this.GET_UNPROCESSED_PURSH()
       .then((res) => {
-        if (res.data) this.unprocessedPursh = res.data;
+        this.unprocessedPursh = res.purchases;
       })
-      .catch((err) => {
-        this.message = err.data.message;
+      .catch(() => {
+        this.message = "Нет необработанных заявок";
       });
   },
 };

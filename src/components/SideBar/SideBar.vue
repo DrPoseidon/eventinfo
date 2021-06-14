@@ -10,19 +10,21 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "SideBar",
   methods: {
+    ...mapActions(["LOGOUT"]),
     logout() {
       localStorage.removeItem("token");
+      this.LOGOUT();
       this.$router.push("/login");
     },
   },
   computed: {
     ...mapGetters(["USER"]),
     mainRoute() {
-      return `/${this.USER.role}sMainPage`;
+      return `/${this.USER.role.toLowerCase()}sMainPage`;
     },
   },
 };
