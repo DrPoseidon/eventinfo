@@ -107,7 +107,13 @@ export default {
     },
   },
   mounted() {
-    this.getUnprocessedPursh();
+    if (JSON.parse(localStorage.vuex).user.role === "MANAGER") {
+      this.getUnprocessedPursh();
+    } else {
+      this.$router.push(
+        `/${JSON.parse(localStorage.vuex).user.role.toLowerCase()}sMainPage`
+      );
+    }
   },
 };
 </script>

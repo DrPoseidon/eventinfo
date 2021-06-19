@@ -9,6 +9,8 @@ import tariff from "Pages/tariff";
 import requisite from "Pages/requisite";
 import workers from "Pages/workers";
 import workersMainPage from "Pages/workersMainPage";
+import workerRequisite from "Pages/workerRequisite";
+import purchase from "Pages/purchase";
 
 Vue.use(VueRouter);
 
@@ -66,9 +68,25 @@ const router = new VueRouter({
           },
         },
         {
+          path: "workerRequisite",
+          name: "workerRequisite",
+          component: workerRequisite,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
           path: "workers",
           name: "workers",
           component: workers,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
+          path: "purchase",
+          name: "purchase",
+          component: purchase,
           meta: {
             requiresAuth: true,
           },

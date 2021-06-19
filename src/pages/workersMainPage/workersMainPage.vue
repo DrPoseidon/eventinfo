@@ -54,7 +54,7 @@
         </tr>
       </tbody>
     </table>
-    <p class="message" v-else>{{ message }}</p>
+    <p class="message" v-if="message || !upcomingWorks.length">{{ message }}</p>
   </div>
 </template>
 <script>
@@ -107,11 +107,13 @@ export default {
     getUpcomingWorks() {
       this.GET_UPCOMING_WORKS()
         .then((res) => {
-          this.upcomingWorks = res;
+          if (res.length) {
+            this.upcomingWorks = res;
+          } else {
+            this.message = "Нет заказов";
+          }
         })
-        .catch(() => {
-          this.message = "Нет заказов";
-        });
+        .catch(() => {});
     },
     setEventHost(row) {
       this.SET_ORDER({ order_id: row.order_id }).then(() => {
@@ -120,7 +122,13 @@ export default {
     },
   },
   mounted() {
-    this.getUpcomingWorks();
+    if (JSON.parse(localStorage.vuex).user.role === "WORKER") {
+      this.getUpcomingWorks();
+    } else {
+      this.$router.push(
+        `/${JSON.parse(localStorage.vuex).user.role.toLowerCase()}sMainPage`
+      );
+    }
   },
 };
 </script>

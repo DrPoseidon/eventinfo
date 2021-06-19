@@ -41,6 +41,10 @@ export default {
     const res = await axios.get(`${uri}manager/requisite`);
     return res.data;
   },
+  GET_WORKER_REQUISITE: async (_, data) => {
+    const res = await axios.post(`${uri}worker/requisite`, data);
+    return res.data;
+  },
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SET
@@ -52,6 +56,10 @@ export default {
     const res = await axios.post(`${uri}worker/completeorder `, data);
     return res.data;
   },
+  SET_REQUISITE: async (_, data) => {
+    const res = await axios.post(`${uri}worker/requisiteadd `, data);
+    return res.data;
+  },
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SEND
@@ -61,6 +69,10 @@ export default {
   },
   SEND_TARIFF: async (_, data) => {
     const res = await axios.post(`${uri}manager/tariffadd `, data);
+    return res;
+  },
+  SEND_PURCHASE: async (_, data) => {
+    const res = await axios.post(`${uri}worker/purchasecreate `, data);
     return res;
   },
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

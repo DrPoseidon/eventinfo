@@ -5,7 +5,12 @@
     <router-link :to="{ name: requisite.name }">{{
       requisite.title
     }}</router-link>
-    <router-link :to="{ name: 'workers' }">Персонал</router-link>
+    <router-link :to="{ name: 'workers' }" v-if="USER.role === 'MANAGER'"
+      >Персонал</router-link
+    >
+    <router-link :to="{ name: 'purchase' }" v-if="USER.role === 'WORKER'"
+      >Заявка</router-link
+    >
     <router-link :to="{ name: 'tariff' }">Тарифы</router-link>
     <hr />
     <a @click="logout">Выход</a>

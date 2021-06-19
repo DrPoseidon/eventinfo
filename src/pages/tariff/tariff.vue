@@ -1,6 +1,6 @@
 <template>
   <div class="tariff">
-    <table ref="table" v-if="tariffs.length">
+    <table ref="table">
       <caption>
         Тарифы
       </caption>
@@ -60,7 +60,7 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  name: "tariff",
+  name: "requisite",
   data() {
     return {
       tariffs: [],

@@ -1,6 +1,6 @@
 <template>
   <div class="workers">
-    <table ref="table">
+    <table ref="table" v-if="workers.length">
       <caption>
         Персонал
       </caption>
@@ -107,13 +107,7 @@ export default {
     },
   },
   mounted() {
-    if (JSON.parse(localStorage.vuex).user.role === "MANAGER") {
-      this.getWorkers();
-    } else {
-      this.$router.push(
-        `/${JSON.parse(localStorage.vuex).user.role.toLowerCase()}sMainPage`
-      );
-    }
+    this.getWorkers();
   },
 };
 </script>
