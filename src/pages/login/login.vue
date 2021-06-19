@@ -15,7 +15,7 @@
         autocomplete="on"
         v-model="password"
       />
-      <button type="submit" pre>Войти</button>
+      <button type="submit">Войти</button>
     </form>
     <p class="message" v-if="message">{{ message }}</p>
   </div>

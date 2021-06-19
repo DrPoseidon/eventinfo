@@ -79,6 +79,7 @@ export default {
       this.name = "";
       this.info = "";
       this.add = false;
+      this.message = "";
     },
     send() {
       const { name, info } = this;

@@ -45,6 +45,14 @@ export default {
     const res = await axios.post(`${uri}worker/requisite`, data);
     return res.data;
   },
+  GET_CLIENTS: async (_, data) => {
+    const res = await axios.get(`${uri}user/clients`, data);
+    return res.data;
+  },
+  GET_QUESTS: async (_, data) => {
+    const res = await axios.get(`${uri}user/quests`, data);
+    return res.data;
+  },
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SET
@@ -75,5 +83,14 @@ export default {
     const res = await axios.post(`${uri}worker/purchasecreate `, data);
     return res;
   },
+  SEND_ORDER_DATA: async (_, data) => {
+    const res = await axios.post(`${uri}operator/orderadd `, data);
+    return res;
+  },
+  SEND_CLIENT: async (_, data) => {
+    const res = await axios.post(`${uri}operator/clientadd `, data);
+    return res;
+  },
+
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 };

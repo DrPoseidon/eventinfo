@@ -1,11 +1,59 @@
-.orders {
+.operatorsMainPage {
   background-color: #766876;
   margin-right: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+
+  .operatorInfo {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: initial;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 25px;
+    margin: 10px;
+    h2 {
+      background-color: initial;
+      color: #363236;
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .row {
+      background-color: initial;
+      display: flex;
+      flex-direction: row;
+      p {
+        color: #494049;
+        background-color: initial;
+        font-size: 15px;
+        font-weight: 500;
+        &:first-child {
+          margin-right: 5px;
+          color: #363236;
+        }
+      }
+    }
+  }
+  .add,
+  .reset {
+    border: 2px solid black;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:active {
+      background-color: white;
+    }
+  }
+  .reset {
+    background-color: red;
+  }
   table {
     margin: 10px;
     background-color: initial;
@@ -26,9 +74,7 @@
         th {
           background-color: inherit;
           text-align: start;
-          &:not(:last-child) {
-            padding-right: 10px;
-          }
+          padding-right: 10px;
         }
       }
     }
@@ -40,12 +86,24 @@
           background-color: inherit;
           border: 2px solid #493d49;
           padding: 10px;
+          height: 20px;
+          button {
+            width: 100px;
+            height: 44px;
+            border: 2px solid #493d49;
+            cursor: pointer;
+            transition: 0.2s;
+            &:active {
+              background-color: white;
+            }
+          }
           form {
             background-color: initial;
             input {
               border: 2px solid #493d49;
               background-color: initial;
               height: 40px;
+              // padding: 10px;
               font-size: 15px;
               &::-moz-placeholder {
                 color: #494049;
@@ -60,37 +118,8 @@
               }
             }
           }
-
-          .reset {
-            background-color: red;
-          }
-        }
-        .action {
-          transition: 0.2s;
-          background-color: #645465;
-          &:hover {
-            background-color: #b091b3;
-          }
-          a {
-            background-color: initial;
-            text-decoration: none;
-            cursor: pointer;
-          }
         }
       }
-    }
-  }
-  .add,
-  .reset {
-    border: 2px solid black;
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: 0.2s;
-    &:active {
-      background-color: white;
     }
   }
   .message {
@@ -99,6 +128,5 @@
     background-color: initial;
     width: 300px;
     font-size: 25px;
-    margin: 20px;
   }
 }

@@ -2,9 +2,11 @@
   <div class="sideBar">
     <router-link :to="mainRoute">Главная</router-link>
     <router-link :to="{ name: 'orders' }">Заказы</router-link>
-    <router-link :to="{ name: requisite.name }">{{
-      requisite.title
-    }}</router-link>
+    <router-link
+      :to="{ name: requisite.name }"
+      v-if="USER.role != 'OPERATOR'"
+      >{{ requisite.title }}</router-link
+    >
     <router-link :to="{ name: 'workers' }" v-if="USER.role === 'MANAGER'"
       >Персонал</router-link
     >

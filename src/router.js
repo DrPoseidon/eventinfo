@@ -11,6 +11,7 @@ import workers from "Pages/workers";
 import workersMainPage from "Pages/workersMainPage";
 import workerRequisite from "Pages/workerRequisite";
 import purchase from "Pages/purchase";
+import operatorsMainPage from "Pages/operatorsMainPage";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,14 @@ const router = new VueRouter({
           path: "workersMainPage",
           name: "workersMainPage",
           component: workersMainPage,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
+          path: "operatorsMainPage",
+          name: "operatorsMainPage",
+          component: operatorsMainPage,
           meta: {
             requiresAuth: true,
           },

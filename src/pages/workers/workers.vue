@@ -9,7 +9,7 @@
           <th>Имя</th>
           <th>Email</th>
           <th v-if="add">Пароль</th>
-          <th>Роль</th>
+          <th>Должность</th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +35,7 @@
               <input type="text" placeholder="Пароль" v-model="password" />
 
               <select v-model="role">
+                <option value="" selected disabled>Выберете должность</option>
                 <option value="MANAGER">Менеджер</option>
                 <option value="OPERATOR">Оператор</option>
                 <option value="WORKER">Ведущий</option>

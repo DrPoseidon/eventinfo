@@ -47,6 +47,7 @@ export default {
       this.GET_REQUISITE()
         .then((res) => {
           this.requisite = res;
+          this.message = "";
         })
         .catch(() => {
           this.message = "Нет реквизита";

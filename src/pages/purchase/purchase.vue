@@ -2,6 +2,7 @@
   <div class="purchase">
     <h2 v-if="requisite.length">Заявка на закупку</h2>
     <select v-model="value" v-if="requisite.length">
+      <option value="" disabled selected>Выберете реквизит</option>
       <option
         :value="req.requisite_id"
         v-for="req in requisite"
