@@ -1,4 +1,4 @@
-.managersMainPage {
+.workersMainPage {
   background-color: #766876;
   margin-right: 20px;
   border-radius: 10px;
@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
 
-  .managerInfo {
+  .workerInfo {
     border: 2px solid black;
     border-radius: 10px;
     background-color: initial;
@@ -58,7 +58,9 @@
         th {
           background-color: inherit;
           text-align: start;
-          padding-right: 10px;
+          &:not(:last-child) {
+            padding-right: 10px;
+          }
         }
       }
     }
@@ -70,41 +72,17 @@
           background-color: inherit;
           border: 2px solid #493d49;
           padding: 10px;
-          height: 20px;
-          &:last-child {
-            border: none;
-            padding: 0;
-            display: flex;
-            flex-direction: row;
-            // align-items: center;
+        }
+        .action {
+          transition: 0.2s;
+          background-color: #645465;
+          &:hover {
+            background-color: #b091b3;
           }
-          button {
-            width: 100px;
-            height: 44px;
-            border: 2px solid #493d49;
-            cursor: pointer;
-            transition: 0.2s;
-            &:active {
-              background-color: white;
-            }
-          }
-          input {
-            border: 2px solid #493d49;
+          a {
             background-color: initial;
-            height: 40px;
-            // padding: 10px;
-            font-size: 15px;
-            &::-moz-placeholder {
-              color: #494049;
-            }
-            &::-webkit-input-placeholder {
-              color: #494049;
-            }
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
-            }
+            text-decoration: none;
+            cursor: pointer;
           }
         }
       }

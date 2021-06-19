@@ -1,6 +1,6 @@
 <template>
-  <div class="managersMainPage">
-    <div class="managerInfo" :style="{ width: width }" ref="managerInfo">
+  <div class="workersMainPage">
+    <div class="workerInfo" :style="{ width: width }" ref="worker">
       <h2>Информация пользователя</h2>
       <div class="row">
         <p>Email:</p>
@@ -11,42 +11,45 @@
         <p>{{ role }}</p>
       </div>
     </div>
-
-    <table ref="table" v-if="unprocessedPursh.length">
+    <table ref="table" v-if="upcomingWorks.length">
       <caption>
         Необработанные заявки
       </caption>
       <thead>
         <tr>
           <th>№</th>
-          <th>Название реквизита</th>
-          <th>Статус закупки</th>
-          <th>Подтверждение</th>
+          <th>Название</th>
+          <th>Дата</th>
+          <th>Время</th>
+          <th>Место</th>
+          <th>Имя клиента</th>
+          <th>Телефон клиента</th>
+          <th>Выполнить</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="(row, index) in unprocessedPursh" :key="index">
+        <tr v-for="(row, index) in upcomingWorks" :key="index">
           <td>{{ index + 1 }}</td>
           <td>
-            {{
-              row.requisite_name[0].toUpperCase() + row.requisite_name.slice(1)
-            }}
+            {{ row.event_name[0].toUpperCase() + row.event_name.slice(1) }}
           </td>
           <td>
-            {{
-              row.purchase_status[0].toUpperCase() +
-                row.purchase_status.slice(1).toLowerCase()
-            }}
+            {{ getRusDate(row.event_date) }}
           </td>
           <td>
-            <input
-              type="number"
-              placeholder="Введите цену"
-              v-model="price"
-            /><button @click="send(row)" v-if="price">
-              ОК
-            </button>
+            C {{ row.event_start_time.slice(0, 5) }} до
+            {{ row.event_end_time.slice(0, 5) }}
+          </td>
+          <td>{{ row.event_place }}</td>
+          <td>{{ row.client_name }}</td>
+          <td>{{ row.client_phone }}</td>
+          <td
+            style="cursor:pointer;"
+            @click="setEventHost(row)"
+            :class="{ action: !row.name }"
+          >
+            <a>ОК</a>
           </td>
         </tr>
       </tbody>
@@ -57,12 +60,11 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  name: "managersMainPage",
+  name: "workersMainPage",
   data() {
     return {
-      unprocessedPursh: [],
+      upcomingWorks: [],
       message: "",
-      price: "",
     };
   },
   computed: {
@@ -76,14 +78,20 @@ export default {
     width() {
       this.$nextTick(() => {
         if (this.$refs.table) {
-          this.$refs.managerInfo.style.width = `${this.$refs.table.clientWidth}px`;
+          this.$refs.worker.style.width = `${this.$refs.table.clientWidth}px`;
         }
       });
       return "auto";
     },
   },
   methods: {
-    ...mapActions(["GET_UNPROCESSED_PURSH", "SEND_UNPROCESSED_PURSH"]),
+    ...mapActions(["GET_UPCOMING_WORKS", "SET_ORDER"]),
+    getRusDate(date) {
+      const year = date.substr(0, 4);
+      const month = date.substr(5, 2);
+      const day = date.substr(8, 2);
+      return `${day}.${month}.${year}`;
+    },
     send(el) {
       const { price } = this;
       if (price && price >= 0) {
@@ -96,18 +104,23 @@ export default {
         );
       }
     },
-    getUnprocessedPursh() {
-      this.GET_UNPROCESSED_PURSH()
+    getUpcomingWorks() {
+      this.GET_UPCOMING_WORKS()
         .then((res) => {
-          this.unprocessedPursh = res.purchases;
+          this.upcomingWorks = res;
         })
         .catch(() => {
-          this.message = "Нет необработанных заявок";
+          this.message = "Нет заказов";
         });
+    },
+    setEventHost(row) {
+      this.SET_ORDER({ order_id: row.order_id }).then(() => {
+        this.getUpcomingWorks();
+      });
     },
   },
   mounted() {
-    this.getUnprocessedPursh();
+    this.getUpcomingWorks();
   },
 };
 </script>

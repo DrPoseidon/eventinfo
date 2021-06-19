@@ -12,7 +12,7 @@
           <th>Время</th>
           <th>Место</th>
           <th>Ведущий</th>
-          <th v-if="isSet"></th>
+          <th v-if="isSet && role === 'MANAGER'"></th>
         </tr>
       </thead>
       <tbody>
@@ -32,13 +32,17 @@
           <td
             style="cursor:pointer;"
             @click="setEventHost(row)"
-            v-if="!row.name && (!isSet || (isSet && row !== order))"
+            v-if="
+              !row.name &&
+                (!isSet || (isSet && row !== order)) &&
+                role === 'MANAGER'
+            "
             :class="{ action: !row.name }"
           >
             <a>Назначить</a>
           </td>
           <td
-            v-if="isSet && order === row"
+            v-if="isSet && order === row && role === 'MANAGER'"
             style="display:flex;flex-direction:row;align-items:center;"
           >
             <select v-model="worker"
@@ -66,6 +70,7 @@ export default {
       order: {},
       message: "",
       isSet: false,
+      role: "",
     };
   },
   methods: {
@@ -102,21 +107,28 @@ export default {
         }
       });
     },
+    getOrders() {
+      this.GET_ORDERS()
+        .then((orders) => {
+          this.orders = orders.orders;
+        })
+        .catch(() => {
+          this.message = "Нет заказов";
+        });
+    },
+    getWorkers() {
+      this.GET_WORKERS().then((workers) => {
+        this.workers = workers.workers;
+        this.workers = workers.workers.filter((worker) => {
+          if (worker.role === "WORKER") return worker;
+        });
+      });
+    },
   },
   mounted() {
-    this.GET_ORDERS()
-      .then((orders) => {
-        this.orders = orders.orders;
-      })
-      .catch(() => {
-        this.message = "Нет заказов";
-      });
-    this.GET_WORKERS().then((workers) => {
-      this.workers = workers.workers;
-      this.workers = workers.workers.filter((worker) => {
-        if (worker.role === "WORKER") return worker;
-      });
-    });
+    this.getOrders();
+    this.getWorkers();
+    this.role = JSON.parse(localStorage.vuex).user.role;
   },
 };
 </script>

@@ -5,6 +5,10 @@ import managersMainPage from "Pages/managersMainPage";
 import login from "Pages/login";
 import error404 from "Pages/error404";
 import orders from "Pages/orders";
+import tariff from "Pages/tariff";
+import requisite from "Pages/requisite";
+import workers from "Pages/workers";
+import workersMainPage from "Pages/workersMainPage";
 
 Vue.use(VueRouter);
 
@@ -17,7 +21,9 @@ const router = new VueRouter({
       path: "/",
       component: mainView,
       name: "mainView",
-      redirect: "managersMainPage",
+      redirect: `${JSON.parse(
+        localStorage.vuex
+      ).user.role.toLowerCase()}sMainPage`,
       children: [
         {
           path: "managersMainPage",
@@ -28,9 +34,41 @@ const router = new VueRouter({
           },
         },
         {
+          path: "workersMainPage",
+          name: "workersMainPage",
+          component: workersMainPage,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
           path: "orders",
           name: "orders",
           component: orders,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
+          path: "tariff",
+          name: "tariff",
+          component: tariff,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
+          path: "requisite",
+          name: "requisite",
+          component: requisite,
+          meta: {
+            requiresAuth: true,
+          },
+        },
+        {
+          path: "workers",
+          name: "workers",
+          component: workers,
           meta: {
             requiresAuth: true,
           },

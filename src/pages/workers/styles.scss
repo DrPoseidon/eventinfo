@@ -1,42 +1,25 @@
-.managersMainPage {
+.workers {
   background-color: #766876;
   margin-right: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .managerInfo {
+  .add,
+  .reset {
     border: 2px solid black;
+    padding: 10px;
+    font-size: 15px;
     border-radius: 10px;
-    background-color: initial;
-    display: inline-flex;
-    flex-direction: column;
-    padding: 25px;
-    margin: 10px;
-    h2 {
-      background-color: initial;
-      color: #363236;
-      border-bottom: 1px solid black;
-      padding-bottom: 5px;
-      margin-bottom: 10px;
-      font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:active {
+      background-color: white;
     }
-    .row {
-      background-color: initial;
-      display: flex;
-      flex-direction: row;
-      p {
-        color: #494049;
-        background-color: initial;
-        font-size: 15px;
-        font-weight: 500;
-        &:first-child {
-          margin-right: 5px;
-          color: #363236;
-        }
-      }
-    }
+  }
+  .reset {
+    background-color: red;
   }
   table {
     margin: 10px;
@@ -71,28 +54,14 @@
           border: 2px solid #493d49;
           padding: 10px;
           height: 20px;
-          &:last-child {
-            border: none;
-            padding: 0;
-            display: flex;
-            flex-direction: row;
-            // align-items: center;
-          }
-          button {
-            width: 100px;
-            height: 44px;
-            border: 2px solid #493d49;
-            cursor: pointer;
-            transition: 0.2s;
-            &:active {
-              background-color: white;
-            }
-          }
+        }
+        form {
+          background-color: initial;
           input {
             border: 2px solid #493d49;
             background-color: initial;
             height: 40px;
-            // padding: 10px;
+            margin-right: 10px;
             font-size: 15px;
             &::-moz-placeholder {
               color: #494049;
@@ -105,6 +74,9 @@
               -webkit-appearance: none;
               margin: 0;
             }
+          }
+          select {
+            margin-right: 10px;
           }
         }
       }

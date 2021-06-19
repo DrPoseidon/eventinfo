@@ -1,12 +1,5 @@
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> РАССКОММЕНТИРОВАТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
-
 import axios from "axios";
 const uri = "http://localhost:5000/api/";
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> УДАЛИТЬ, КОГДА БУДЕТ РАБОТАТЬ БЕК
-// import MD5 from "crypto-js/md5";
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 export default {
   LOGIN: async ({ commit }, data) => {
@@ -18,6 +11,15 @@ export default {
   },
   LOGOUT: ({ commit }) => {
     commit("SET_USER", { id: "", email: "", name: "", role: "" });
+  },
+  REGISTRATION: async (_, data) => {
+    const res = await axios.post(`${uri}manager/registration`, data);
+    return res.data;
+  },
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GET
+  GET_UPCOMING_WORKS: async () => {
+    const res = await axios.get(`${uri}manager/upcomingworks`);
+    return res.data;
   },
   GET_UNPROCESSED_PURSH: async () => {
     const res = await axios.get(`${uri}manager/unprocessedpursh`);
@@ -31,8 +33,35 @@ export default {
     const res = await axios.get(`${uri}manager/workers`);
     return res.data;
   },
-  SET_WORKER: async (vuex, data) => {
+  GET_TARIFFS: async () => {
+    const res = await axios.get(`${uri}user/tariffs`);
+    return res.data;
+  },
+  GET_REQUISITE: async () => {
+    const res = await axios.get(`${uri}manager/requisite`);
+    return res.data;
+  },
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SET
+  SET_WORKER: async (_, data) => {
     const res = await axios.post(`${uri}manager/assignment `, data);
     return res.data;
   },
+  SET_ORDER: async (_, data) => {
+    const res = await axios.post(`${uri}worker/completeorder `, data);
+    return res.data;
+  },
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SEND
+  SEND_UNPROCESSED_PURSH: async (_, data) => {
+    const res = await axios.post(`${uri}manager/completepurchase `, data);
+    return res;
+  },
+  SEND_TARIFF: async (_, data) => {
+    const res = await axios.post(`${uri}manager/tariffadd `, data);
+    return res;
+  },
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 };

@@ -26,8 +26,8 @@ export default {
   name: "login",
   data() {
     return {
-      email: "manager@mail.ru",
-      password: "manager",
+      email: "worker4@mail.ru",
+      password: "123",
       message: "",
     };
   },
@@ -39,7 +39,8 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             localStorage.setItem("token", JSON.stringify(res.data.token));
-            this.$router.push("/");
+            const route = JSON.parse(localStorage.vuex).user.role.toLowerCase();
+            this.$router.push(`${route}sMainPage`);
           }
         })
         .catch(() => {
